@@ -2,24 +2,26 @@ package com.jungle.fakebook
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 
 class InfoActivity : AppCompatActivity() {
 
-    private lateinit var tvEmail: TextView
-    private lateinit var tvPassword: TextView
+    private lateinit var tvTitle: TextView
+    private lateinit var tvDescription: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info)
 
-        tvEmail = findViewById(R.id.tvEmail)
-        tvPassword = findViewById(R.id.tvPassword)
+        tvTitle = findViewById(R.id.title)
+        tvDescription = findViewById(R.id.description)
 
-        val email = intent.getStringExtra("email").toString()
-        tvEmail.text = email
+        val title = intent.getStringExtra(TITLE_EXTRA).toString()
+        val description = intent.getStringExtra(DESCR_EXTRA).toString()
 
-        val password = intent.getStringExtra("password").toString()
-        tvPassword.text = password
+        tvTitle.text = title
+        tvDescription.text = description
+
     }
 }
