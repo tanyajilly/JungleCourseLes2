@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">Fakebook</string>
+    <string name="app_name">Notebook</string>
+    <string name="button_signup">Sign up</string>
+    <string name="button_signin">Sign in</string>
+    <string name="email">Email</string>
+    <string name="email_error">"Enter email"</string>
 </resources>

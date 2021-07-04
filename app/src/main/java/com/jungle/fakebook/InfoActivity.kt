@@ -2,24 +2,50 @@ package com.jungle.fakebook
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.jungle.fakebook.adapter.NoteAdapter
+import com.jungle.fakebook.data.NoteModel
+import com.jungle.fakebook.data.ToDoItemModel
 
 class InfoActivity : AppCompatActivity() {
 
-    private lateinit var tvEmail: TextView
-    private lateinit var tvPassword: TextView
+    private lateinit var rvNotes: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info)
 
-        tvEmail = findViewById(R.id.tvEmail)
-        tvPassword = findViewById(R.id.tvPassword)
+        rvNotes = findViewById(R.id.rvNotes)
 
-        val email = intent.getStringExtra("email").toString()
-        tvEmail.text = email
+        val toDoList1 = listOf(
+            ToDoItemModel("Milk", true),
+            ToDoItemModel("Cheese", false),
+            ToDoItemModel("Meat", false),
+        )
 
-        val password = intent.getStringExtra("password").toString()
-        tvPassword.text = password
+        rvNotes.adapter = NoteAdapter(
+            listOf(
+                NoteModel( "Shopping", null, toDoList1),
+                NoteModel( "Films for evening", "Film1, Film2, Film3"),
+                NoteModel( "Books from Mike", "Book1, Book2, Book3"),
+                NoteModel( "My top 3 laptops", "Lenovo, HP, Macbook"),
+                NoteModel( "Note 1", "Milk, cheese, meat"),
+                NoteModel("Films for evening", "Film1, Film2, Film3"),
+                NoteModel( "Books from Mike", "Book1, Book2, Book3"),
+                NoteModel( "My top 3 laptops", "Lenovo, HP, Macbook"),
+                NoteModel( "Note 1", "Milk, cheese, meat"),
+                NoteModel( "Films for evening", "Film1, Film2, Film3"),
+                NoteModel( "Books from Mike", "Book1, Book2, Book3"),
+                NoteModel( "My top 3 laptops", "Lenovo, HP, Macbook"),
+                NoteModel( "Note 1", "Milk, cheese, meat"),
+                NoteModel("Films for evening", "Film1, Film2, Film3"),
+                NoteModel("Books from Mike", "Book1, Book2, Book3"),
+                NoteModel("My top 3 laptops", "Lenovo, HP, Macbook"),
+            )
+        )
+
+        rvNotes.layoutManager = GridLayoutManager(this,2)
+
     }
 }
