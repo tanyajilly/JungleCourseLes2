@@ -27,7 +27,9 @@ class MainActivity : AppCompatActivity() {
 
         emailEditText.setOnFocusChangeListener { v, hasFocus ->
             emailInputLayout.error = null
-            scrollView.postDelayed({ scrollView.fullScroll(View.FOCUS_DOWN) }, 250)
+            if(hasFocus) {
+                scrollView.postDelayed({ scrollView.fullScroll(View.FOCUS_DOWN) }, 450)
+            }
         }
 
         emailEditText.setOnClickListener {

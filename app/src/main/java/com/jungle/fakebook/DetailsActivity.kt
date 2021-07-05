@@ -30,18 +30,18 @@ class DetailsActivity : AppCompatActivity() {
 
         tvTitle.text = note?.title
         if (description.isNullOrBlank()) {
-
             tvDescription.visibility = View.GONE
         }
         else {
-            tvDescription.text = note?.description
+            // Лучше использовать переменную description
+            tvDescription.text = description
         }
 
         val toDoList = note?.list
         if (toDoList !== null) {
             rvToDoList.adapter = ToDoAdapter(toDoList)
             rvToDoList.layoutManager = LinearLayoutManager(this)
+            rvToDoList.isNestedScrollingEnabled = false
         }
-
     }
 }

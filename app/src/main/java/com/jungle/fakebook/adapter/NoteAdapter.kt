@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.jungle.fakebook.*
 import com.jungle.fakebook.data.NoteModel
@@ -30,17 +31,22 @@ class NoteAdapter (
         holder.tvTitle.text = note.title
         holder.tvDescription.text = note.description
 
-        when((0..3).random()) {
-            0 -> holder.cvNote.setCardBackgroundColor(Color.parseColor("#F9E79F"))
-            1 -> holder.cvNote.setCardBackgroundColor(Color.parseColor("#E8DAEF"))
-            2 -> holder.cvNote.setCardBackgroundColor(Color.parseColor("#D6EAF8"))
-            3 -> holder.cvNote.setCardBackgroundColor(Color.parseColor("#F6F4F4"))
-        }
+        val listOfColorIds = listOf(R.color.yellow, R.color.purple, R.color.light_blue, R.color.light_gray)
+
+        val context = holder.itemView.context
+        holder.cvNote.setCardBackgroundColor(ContextCompat.getColor(context, listOfColorIds.random()))
+
+//        when((0..3).random()) {
+//            0 -> holder.cvNote.setCardBackgroundColor(ContextCompat.getColor(context, R.color.yellow))
+//            1 -> holder.cvNote.setCardBackgroundColor(Color.parseColor("#E8DAEF"))
+//            2 -> holder.cvNote.setCardBackgroundColor(Color.parseColor("#D6EAF8"))
+//            3 -> holder.cvNote.setCardBackgroundColor(Color.parseColor("#F6F4F4"))
+//        }
 
         holder.itemView.setOnClickListener {
-            val intent = Intent(holder.itemView.context, DetailsActivity::class.java)
+            val intent = Intent(context, DetailsActivity::class.java)
             intent.putExtra(NOTE, note)
-            holder.itemView.context.startActivity(intent)
+            context.startActivity(intent)
         }
     }
 
